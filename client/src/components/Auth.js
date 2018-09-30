@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './config';
+import { AUTH_CONFIG } from '../config';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
@@ -20,7 +20,7 @@ export default class Auth {
         this.setSession(authResult);
         routerHistory.replace('/');
       } else if (err) {
-        routerHistory.replace('/login');
+        routerHistory.replace('/');
         console.log(err);
       }
     });
@@ -39,8 +39,9 @@ export default class Auth {
     localStorage.setItem('proji', JSON.stringify(proji));
   }
 
-  logout() {
+  logout(routerHistory) {
     localStorage.removeItem('proji');
+    routerHistory.replace('/');
   }
 
   isAuthenticated() {

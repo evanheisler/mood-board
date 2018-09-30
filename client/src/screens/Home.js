@@ -16,6 +16,9 @@ class Home extends Component {
     return (
       <div className="container">
         <h4>You are logged in!</h4>
+        <button onClick={() => this.props.auth.logout(this.props.history)}>
+          Log Out
+        </button>
       </div>
     );
   }
