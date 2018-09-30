@@ -11,9 +11,9 @@ class Projects extends Component {
   componentDidMount() {
     fetch('/api/projects')
       .then(res => res.json())
-      .then(projects =>
+      .then(resp =>
         this.setState({
-          projects,
+          projects: resp.data,
           isLoaded: true
         })
       )
