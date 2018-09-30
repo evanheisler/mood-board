@@ -20,8 +20,7 @@ The Proji dashboard allows teams to see at-a-glance how certain groups are feeli
 2. `yarn && cd client yarn` to install dependencies
 3. `cp .env.example .env` and update the database URI you'd like to use.
 4. Repeat for the `.env` in the client. You will need to create an app on [Auth0](https://auth0.com/) to collect this information.
-5. `yarn start` from root to start the server
-6. `yarn start` from `client` to start the clientside app.
+5. `yarn start` from root to start the server and client app in parallel using `npm-run-all`
 
 ## Configuration
 
