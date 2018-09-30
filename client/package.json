@@ -1,11 +1,17 @@
 {
-  "name": "client",
+  "name": "proji-client",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "auth0-js": "9.8.0",
     "bootstrap": "4.1.3",
+    "env-cmd": "8.0.2",
     "node-sass": "4.9.3",
+    "prop-types": "15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "4.3.1",

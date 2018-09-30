@@ -1,12 +1,19 @@
 {
-  "name": "mood-board",
+  "name": "proji",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:evanheisler/mood-board.git",
+  "repository": "git@github.com:evanheisler/proji.git",
   "author": "Evan Heisler <evanheisler@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "4.16.3"
+    "bluebird": "3.5.2",
+    "dotenv": "6.0.0",
+    "express": "4.16.3",
+    "pg-promise": "8.4.6"
   },
   "scripts": {
     "start": "node index.js",

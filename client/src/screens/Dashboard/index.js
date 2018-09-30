@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Projects from './Projects';
 
-class Home extends Component {
+class Dashboard extends Component {
   login() {
     this.props.auth.login();
   }
@@ -19,9 +20,10 @@ class Home extends Component {
         <button onClick={() => this.props.auth.logout(this.props.history)}>
           Log Out
         </button>
+        <Projects />
       </div>
     );
   }
 }
 
-export default Home;
+export default Dashboard;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from 'Home';
+import Dashboard from 'Dashboard';
 import Loading from 'Loading';
 import Auth from 'Auth';
 
@@ -42,7 +42,7 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <Home auth={auth} {...props} />}
+            render={props => <Dashboard auth={auth} {...props} />}
           />
           <Route
             path="/authenticate"
