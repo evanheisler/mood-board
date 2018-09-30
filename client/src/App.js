@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './screens/Home';
-import Loading from './components/Loading';
-import Auth from './components/Auth';
+import Home from 'Home';
+import Loading from 'Loading';
+import Auth from 'Auth';
 
 const auth = new Auth();
 
