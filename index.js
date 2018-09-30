@@ -44,4 +44,4 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-console.log(`Mood API listening on ${port}`);
+console.log(`Proji API listening on ${port}`);

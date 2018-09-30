@@ -16,7 +16,12 @@
     "pg-promise": "8.4.6"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "run-p start-backend start-frontend",
+    "start-backend": "node index.js",
+    "start-frontend": "cd client && yarn start",
     "heroku-postbuild": "cd client && yarn && yarn run build"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.1.3"
   }
 }
