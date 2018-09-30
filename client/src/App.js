@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './screens/Home';
+import Loading from './components/Loading';
+import Auth from './components/Auth';
+
+const auth = new Auth();
 
 class App extends Component {
   state = {
     ping: false
   };
-  // Fetch passwords after first mount
+
   componentDidMount() {
-    this.ping();
+    if (!this.state.ping) {
+      this.ping();
+    }
   }
+
+  handleAuthentication = nextState => {
+    if (/access_token|id_token|error/.test(nextState.location.hash)) {
+      auth.handleAuthentication(nextState.history);
+    }
+  };
 
   ping = () => {
     fetch('/api/ping')
@@ -19,11 +33,27 @@ class App extends Component {
   render() {
     const { ping } = this.state;
 
+    if (!ping) {
+      return null;
+    }
+
     return (
-      <div className="App">
-        {ping != null ? 'API is Available' : 'Connection not established.'}
-        <button onClick={this.ping}>Send Request</button>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <Home auth={auth} {...props} />}
+          />
+          <Route
+            path="/authenticate"
+            render={props => {
+              this.handleAuthentication(props);
+              return <Loading {...props} />;
+            }}
+          />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
