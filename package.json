@@ -10,7 +10,10 @@
   "author": "Evan Heisler <evanheisler@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "4.16.3"
+    "bluebird": "3.5.2",
+    "dotenv": "6.0.0",
+    "express": "4.16.3",
+    "pg-promise": "8.4.6"
   },
   "scripts": {
     "start": "node index.js",
