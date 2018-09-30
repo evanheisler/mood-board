@@ -11,6 +11,29 @@ app.get('/api/ping', (req, res) => {
   res.json('pong');
 });
 
+app.get('/api/projects', (req, res) => {
+  const exampleProjects = [
+    {
+      id: 1,
+      name: 'Peoples Republic of Foo',
+      description: null,
+      status: [
+        {
+          name: 'client',
+          charCode: '0x1F600',
+          niceName: 'grinning'
+        },
+        {
+          name: 'team',
+          charCode: '0x1F600',
+          niceName: 'grinning'
+        }
+      ]
+    }
+  ];
+  res.json(exampleProjects);
+});
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {

@@ -1,8 +1,12 @@
 {
-  "name": "mood-board",
+  "name": "proji",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:evanheisler/mood-board.git",
+  "repository": "git@github.com:evanheisler/proji.git",
   "author": "Evan Heisler <evanheisler@gmail.com>",
   "license": "MIT",
   "dependencies": {
