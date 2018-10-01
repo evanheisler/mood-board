@@ -25,6 +25,25 @@ class Projects extends Component {
       });
   }
 
+  setNew = project => {
+    this.setState(prevState => {
+      return {
+        projects: [project, ...prevState.projects]
+      };
+    });
+  };
+
+  handleRemove = id => {
+    fetch(`/api/project/${id}`, {
+      method: 'DELETE'
+    }).then(() => {
+      const projects = this.state.projects.filter(project => project.id !== id);
+      this.setState({
+        projects
+      });
+    });
+  };
+
   render() {
     const { isLoaded, projects } = this.state;
 
@@ -33,8 +52,8 @@ class Projects extends Component {
     }
 
     return (
-      <div className="card-deck">
-        <NewProject />
+      <div className="card-group">
+        <NewProject setNew={this.setNew} />
         {!projects.length ? (
           <div className="card">
             <div className="card-body">
@@ -42,7 +61,13 @@ class Projects extends Component {
             </div>
           </div>
         ) : (
-          projects.map(project => <Project key={project.id} data={project} />)
+          projects.map(project => (
+            <Project
+              key={project.id}
+              data={project}
+              delete={this.handleRemove}
+            />
+          ))
         )}
       </div>
     );

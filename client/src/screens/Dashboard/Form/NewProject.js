@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import emoji from 'emojilib';
+import PropTypes from 'prop-types';
+import { handleJSONResponse } from 'utils/api';
 
 class NewProject extends Component {
   state = {
@@ -35,8 +37,9 @@ class NewProject extends Component {
         ]
       })
     })
+      .then(handleJSONResponse)
       .then(resp => {
-        console.log(resp);
+        this.props.setNew(resp);
       })
       .catch(err => {
         console.log(err);
@@ -79,5 +82,9 @@ class NewProject extends Component {
     );
   }
 }
+
+NewProject.propTypes = {
+  setNew: PropTypes.func.isRequired
+};
 
 export default NewProject;
