@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Page from 'Page';
 import Projects from './Projects';
 
 class Dashboard extends Component {
@@ -15,13 +16,9 @@ class Dashboard extends Component {
     }
 
     return (
-      <div className="container">
-        <h4>You are logged in!</h4>
-        <button onClick={() => this.props.auth.logout(this.props.history)}>
-          Log Out
-        </button>
+      <Page>
         <Projects />
-      </div>
+      </Page>
     );
   }
 }

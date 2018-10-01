@@ -52,24 +52,30 @@ class Projects extends Component {
     }
 
     return (
-      <div className="card-group">
+      <React.Fragment>
+        <div className="row py-2 text-info">
+          <div className="col-5 mr-auto">Client or Project Name</div>
+          <div className="col-2 text-center">Project</div>
+          <div className="col-2 text-center">Team</div>
+          <div className="col-1">&nbsp;</div>
+        </div>
         <NewProject setNew={this.setNew} />
-        {!projects.length ? (
-          <div className="card">
-            <div className="card-body">
-              <div className="card-title">No Results</div>
-            </div>
+        <div className="row entries my-4">
+          <div className="col pl-4">
+            {!projects.length ? (
+              <h3>No Results</h3>
+            ) : (
+              projects.map(project => (
+                <Project
+                  key={project.id}
+                  data={project}
+                  delete={this.handleRemove}
+                />
+              ))
+            )}
           </div>
-        ) : (
-          projects.map(project => (
-            <Project
-              key={project.id}
-              data={project}
-              delete={this.handleRemove}
-            />
-          ))
-        )}
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

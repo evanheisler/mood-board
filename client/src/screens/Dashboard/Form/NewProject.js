@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import emoji from 'emojilib';
 import PropTypes from 'prop-types';
 import { handleJSONResponse } from 'utils/api';
+import { ReactComponent as Add } from 'SVG/add.svg';
 
 class NewProject extends Component {
   state = {
@@ -50,33 +51,35 @@ class NewProject extends Component {
     const { title, projectStatus, teamStatus } = this.state;
 
     return (
-      <div className="card">
-        <div className="card-body">
-          <div className="form-group">
-            <label htmlFor="new-project-title" className="sr-only" />
-            <input
-              type="text"
-              className="form-control underline-input"
-              id="new-project-title"
-              name="title"
-              placeholder="Title"
-              onChange={this.handleChangeInput}
-              value={title}
-            />
-          </div>
-          <div className="form-group">
-            <div className="emoji-picker" onClick={this.handleTogglePicker}>
-              <span className="emoji">{projectStatus.char}</span>
-              <h6 className="group">Client or Project Status</h6>
+      <div className="row entry-form">
+        <div className="col pl-4">
+          <div className="row align-items-center">
+            <div className="col-5 mr-auto">
+              <label htmlFor="new-project-title" className="sr-only" />
+              <input
+                type="text"
+                className="form-control form-control-lg underline-input"
+                id="new-project-title"
+                name="title"
+                placeholder="Title"
+                onChange={this.handleChangeInput}
+                value={title}
+              />
             </div>
-            <div className="emoji-picker" onClick={this.handleTogglePicker}>
-              <span className="emoji">{teamStatus.char}</span>
-              <h6 className="group">Team Status</h6>
+            <div className="col-2 text-center">
+              <div className="emoji-trigger" onClick={this.handleTogglePicker}>
+                <span className="emoji">{projectStatus.char}</span>
+              </div>
+            </div>
+            <div className="col-2 text-center">
+              <div className="emoji-trigger" onClick={this.handleTogglePicker}>
+                <span className="emoji">{teamStatus.char}</span>
+              </div>
+            </div>
+            <div className="col-1 text-right">
+              <Add className="icon-add" onClick={this.handleAddNew} />
             </div>
           </div>
-          <button className="btn btn-primary" onClick={this.handleAddNew}>
-            Add
-          </button>
         </div>
       </div>
     );
