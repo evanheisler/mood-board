@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Loading from 'Loading';
 import Project from 'Project';
+import NewProject from './Form/NewProject';
 
 class Projects extends Component {
   state = {
@@ -13,7 +14,7 @@ class Projects extends Component {
       .then(res => res.json())
       .then(resp =>
         this.setState({
-          projects: resp.data,
+          projects: resp || [],
           isLoaded: true
         })
       )
@@ -33,6 +34,7 @@ class Projects extends Component {
 
     return (
       <div className="card-deck">
+        <NewProject />
         {!projects.length ? (
           <div className="card">
             <div className="card-body">

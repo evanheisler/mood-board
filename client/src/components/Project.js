@@ -9,8 +9,8 @@ const Project = ({ data, ...rest }) => {
         {data.status.map(entry => (
           <div key={`${entry.name}-${data.id}`}>
             <h3>{entry.name}</h3>
-            <p>{entry.niceName}</p>
-            <h1>{String.fromCodePoint(entry.charCode)}</h1>
+            {/* <p>{entry.niceName}</p> */}
+            <h1>{entry.char}</h1>
           </div>
         ))}
       </div>
