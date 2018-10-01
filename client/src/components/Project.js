@@ -8,7 +8,7 @@ const Project = ({ data, ...rest }) => {
       <div className="col pl-4">
         <div className="row align-items-center">
           <div className="col-5 mr-auto">
-            <h3 className="my-0">{data.name}</h3>
+            <h4 className="my-0">{data.name}</h4>
           </div>
           {data.status.map(entry => (
             <div className="col-2 text-center" key={`${entry.name}-${data.id}`}>
