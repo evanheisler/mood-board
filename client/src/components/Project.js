@@ -12,8 +12,12 @@ const Project = ({ data, ...rest }) => {
           </div>
           {data.status.map(entry => (
             <div className="col-2 text-center" key={`${entry.name}-${data.id}`}>
-              <div className="emoji-trigger">
-                <span className="emoji">{entry.char}</span>
+              <div
+                className="emoji-trigger"
+                id={`${data.id}-${entry.name}-emoji`}
+                onClick={rest.emojiClick}
+              >
+                {entry.char}
               </div>
             </div>
           ))}

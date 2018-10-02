@@ -1,15 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
   color: map-get($grays, '200');
-}
-
-html,
-body,
-#root {
+  background: linear-gradient(-135deg, $primary 0%, lighten($primary, 15%) 90%)
+    no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
-}
-
-#root {
-  background: linear-gradient(-135deg, $primary 0%, lighten($primary, 15%) 90%);
 }
 
 .icon-add {

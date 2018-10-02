@@ -24,4 +24,45 @@
 
 .emoji-trigger {
   font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  margin: 8px 0;
+  padding-top: 5px;
+
+  &.active {
+    background: $info;
+    border-radius: 500px;
+  }
+}
+
+.emoji-picker {
+  position: fixed;
+  bottom: 0;
+  height: 40vh;
+  left: 0;
+  width: 100%;
+  background: map-get($grays, '200');
+  border-top: darken($light, 30%);
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.2);
+  color: $dark;
+  overflow-y: scroll;
+}
+
+.emoji-list {
+  border-radius: 30px;
+  font-size: 2.5rem;
+}
+
+.emoji-search {
+  input {
+    border-radius: 500px;
+  }
+}
+
+.emoji-option {
+  cursor: pointer;
+
+  &:hover {
+    background: map-get($grays, '400');
+  }
 }
