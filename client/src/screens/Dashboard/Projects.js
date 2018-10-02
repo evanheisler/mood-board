@@ -52,6 +52,16 @@ class Projects extends Component {
     });
   };
 
+  handleUpdateProject = project => {
+    fetch(`/api/project/${project.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...project
+      })
+    });
+  };
+
   toggleEmojiPicker = event => {
     const id = event.target.id;
     const target = document.getElementById(id);
@@ -92,6 +102,8 @@ class Projects extends Component {
         }
         return entry;
       });
+
+      this.handleUpdateProject(projectToUpdate);
 
       return {
         projects

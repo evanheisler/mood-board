@@ -15,6 +15,11 @@ body {
   fill: lighten($primary, 30%);
   width: 40px;
   height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    fill: lighten($primary, 80%);
+  }
 }
 
 .icon-delete {
