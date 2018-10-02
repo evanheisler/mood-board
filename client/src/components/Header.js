@@ -1,5 +1,5 @@
 import React from 'react';
-import CircleURL from 'SVG/circle.svg';
+import CircleURL from 'SVG/logo.svg';
 
 const Header = () => {
   return (
