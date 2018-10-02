@@ -4,6 +4,7 @@ import Loading from 'Loading';
 import Project from 'Project';
 import NewProject from './Form/NewProject';
 import EmojiPicker from './Form/EmojiPicker';
+import Alert from 'Alert';
 
 class Projects extends Component {
   state = {
@@ -14,7 +15,12 @@ class Projects extends Component {
     projects: [],
     isLoaded: false,
     emojisOpen: false,
-    editTarget: null
+    editTarget: null,
+    alert: {
+      show: false,
+      msg: '',
+      type: 'success'
+    }
   };
 
   componentDidMount() {
@@ -33,23 +39,55 @@ class Projects extends Component {
       });
   }
 
-  setNewProject = project => {
-    this.setState(prevState => {
-      return {
-        projects: [project, ...prevState.projects]
-      };
+  setAlert = alert => {
+    this.setState({
+      alert: {
+        show: true,
+        ...alert
+      }
     });
+
+    setTimeout(() => {
+      this.setState(prevState => {
+        return {
+          alert: {
+            ...prevState.alert,
+            show: false
+          }
+        };
+      });
+    }, 2000);
+  };
+
+  setNewProject = project => {
+    this.setState(
+      prevState => {
+        return {
+          projects: [project, ...prevState.projects]
+        };
+      },
+      () => {
+        this.setAlert({ msg: 'Saved!' });
+      }
+    );
   };
 
   handleRemoveProject = id => {
     fetch(`/api/project/${id}`, {
       method: 'DELETE'
-    }).then(() => {
-      const projects = this.state.projects.filter(project => project.id !== id);
-      this.setState({
-        projects
-      });
-    });
+    })
+      .then(() => {
+        const projects = this.state.projects.filter(
+          project => project.id !== id
+        );
+        this.setState({
+          projects
+        });
+      })
+      .then(() => this.setAlert({ msg: 'Removed!' }))
+      .catch(() =>
+        this.setAlert({ msg: 'Shoot! Something went wrong.', type: 'danger' })
+      );
   };
 
   handleUpdateProject = project => {
@@ -59,7 +97,11 @@ class Projects extends Component {
       body: JSON.stringify({
         ...project
       })
-    });
+    })
+      .then(() => this.setAlert({ msg: 'Updated!' }))
+      .catch(() =>
+        this.setAlert({ msg: 'Shoot! Something went wrong.', type: 'danger' })
+      );
   };
 
   toggleEmojiPicker = event => {
@@ -112,7 +154,7 @@ class Projects extends Component {
   };
 
   render() {
-    const { isLoaded, projects, newProject, emojisOpen } = this.state;
+    const { isLoaded, projects, newProject, emojisOpen, alert } = this.state;
 
     if (!isLoaded) {
       return <Loading />;
@@ -120,6 +162,7 @@ class Projects extends Component {
 
     return (
       <React.Fragment>
+        <Alert data={alert} />
         <div className="row py-2 text-info">
           <div className="col-5 mr-auto pl-4">Client or Project Name</div>
           <div className="col-2 text-center">Project</div>

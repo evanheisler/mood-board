@@ -1,0 +1,23 @@
+.pill-alert {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  left: 0;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+
+  &.off {
+    top: -5vh;
+  }
+
+  &.on {
+    top: 1vh;
+  }
+
+  > .alert {
+    border-radius: 500px;
+    padding: 6px 30px;
+    text-align: center;
+  }
+}
