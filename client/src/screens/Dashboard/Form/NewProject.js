@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import emoji from 'emojilib';
 import PropTypes from 'prop-types';
 import { handleJSONResponse } from 'utils/api';
 import { ReactComponent as Add } from 'SVG/add.svg';
@@ -7,16 +6,11 @@ import { ReactComponent as Add } from 'SVG/add.svg';
 class NewProject extends Component {
   state = {
     title: '',
-    projectStatus: emoji.lib.grinning,
-    teamStatus: emoji.lib.grinning
+    description: ''
   };
 
   handleChangeInput = e => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleTogglePicker = e => {
-    // picker
   };
 
   handleAddNew = () => {
@@ -29,11 +23,11 @@ class NewProject extends Component {
         status: [
           {
             name: 'client',
-            ...this.state.projectStatus
+            ...this.props.data.client
           },
           {
             name: 'team',
-            ...this.state.teamStatus
+            ...this.props.data.team
           }
         ]
       })
@@ -48,38 +42,44 @@ class NewProject extends Component {
   };
 
   render() {
-    const { title, projectStatus, teamStatus } = this.state;
+    const { title } = this.state;
+    const { data } = this.props;
+    const { emojiClick } = this.props;
 
     return (
-      <div className="row entry-form">
-        <div className="col pl-4">
-          <div className="row align-items-center">
-            <div className="col-5 mr-auto">
-              <label htmlFor="new-project-title" className="sr-only" />
-              <input
-                type="text"
-                className="form-control form-control-lg underline-input"
-                id="new-project-title"
-                name="title"
-                placeholder="Title"
-                onChange={this.handleChangeInput}
-                value={title}
-              />
-            </div>
-            <div className="col-2 text-center">
-              <div className="emoji-trigger" onClick={this.handleTogglePicker}>
-                <span className="emoji">{projectStatus.char}</span>
-              </div>
-            </div>
-            <div className="col-2 text-center">
-              <div className="emoji-trigger" onClick={this.handleTogglePicker}>
-                <span className="emoji">{teamStatus.char}</span>
-              </div>
-            </div>
-            <div className="col-1 text-right">
-              <Add className="icon-add" onClick={this.handleAddNew} />
-            </div>
+      <div className="row entry-form align-items-center">
+        <div className="col-5 mr-auto pl-4">
+          <label htmlFor="new-project-title" className="sr-only" />
+          <input
+            type="text"
+            className="form-control form-control-lg underline-input"
+            id="new-project-title"
+            name="title"
+            placeholder="Title"
+            onChange={this.handleChangeInput}
+            value={title}
+          />
+        </div>
+        <div className="col-2 text-center">
+          <div
+            id="new-client-emoji"
+            className="emoji-trigger"
+            onClick={emojiClick}
+          >
+            {data.client.char}
           </div>
+        </div>
+        <div className="col-2 text-center">
+          <div
+            id="new-team-emoji"
+            className="emoji-trigger"
+            onClick={emojiClick}
+          >
+            {data.team.char}
+          </div>
+        </div>
+        <div className="col-1 text-right">
+          <Add className="icon-add" onClick={this.handleAddNew} />
         </div>
       </div>
     );
