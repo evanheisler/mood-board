@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+}
+
+body {
+  color: map-get($grays, '200');
+  background: linear-gradient(-135deg, $primary 0%, lighten($primary, 15%) 90%)
+    no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.icon-add {
+  fill: lighten($primary, 30%);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  &:hover {
+    fill: lighten($primary, 80%);
+  }
+}
+
+.icon-delete {
+  fill: $light;
+  background: $danger;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
