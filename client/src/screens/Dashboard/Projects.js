@@ -174,7 +174,9 @@ class Projects extends Component {
           setNew={this.setNewProject}
           emojiClick={this.toggleEmojiPicker}
         />
-        <div className="row entries my-4">
+        <div
+          className={`row entries my-4 ${emojisOpen ? 'entries-spacer' : ''}`}
+        >
           <div className="col pl-4">
             {!projects.length ? (
               <h3>No Results</h3>

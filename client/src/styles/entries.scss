@@ -1,4 +1,8 @@
 .entries {
   background: $dark;
   border-radius: 30px;
+
+  &.entries-spacer {
+    margin-bottom: 42vh !important;
+  }
 }
