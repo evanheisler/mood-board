@@ -1,26 +1,8 @@
-import React, { Component } from 'react';
-import Page from 'Page';
+import React from 'react';
 import Projects from './Projects';
+import Placeholder from 'Placeholder';
 
-class Dashboard extends Component {
-  login() {
-    this.props.auth.login();
-  }
-
-  render() {
-    const { isAuthenticated } = this.props.auth;
-
-    if (!isAuthenticated()) {
-      this.login();
-      return null;
-    }
-
-    return (
-      <Page>
-        <Projects />
-      </Page>
-    );
-  }
-}
+const Dashboard = ({ auth, ...rest }) =>
+  auth.isAuthenticated() ? <Projects /> : <Placeholder />;
 
 export default Dashboard;

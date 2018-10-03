@@ -38,9 +38,8 @@ export default class Auth {
     localStorage.setItem('proji', JSON.stringify(proji));
   }
 
-  logout(routerHistory) {
+  logout() {
     localStorage.removeItem('proji');
-    routerHistory.replace('/');
   }
 
   isAuthenticated() {

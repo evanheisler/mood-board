@@ -6,7 +6,7 @@ The Proji dashboard allows teams to see at-a-glance how certain groups are feeli
 
 **Database**: PostgreSQL
 
-**API**: Express.js
+**API**: Express.js + Sequelize.js
 
 **Authentication**: Auth0
 

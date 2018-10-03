@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Dashboard from 'Dashboard';
+import Page from 'Page';
 import Loading from 'Loading';
 import Auth from 'Auth';
+import Dashboard from 'Dashboard';
 
 const auth = new Auth();
 
 class App extends Component {
   state = {
-    ping: false
+    ping: false,
+    loggedIn: auth.isAuthenticated()
   };
 
   componentDidMount() {
@@ -21,6 +23,11 @@ class App extends Component {
     if (/access_token|id_token|error/.test(nextState.location.hash)) {
       auth.handleAuthentication(nextState.history);
     }
+  };
+
+  handleLogOut = () => {
+    auth.logout();
+    this.setState({ loggedIn: auth.isAuthenticated() });
   };
 
   ping = () => {
@@ -38,20 +45,22 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => <Dashboard auth={auth} {...props} />}
-          />
-          <Route
-            path="/authenticate"
-            render={props => {
-              this.handleAuthentication(props);
-              return <Loading {...props} />;
-            }}
-          />
-        </Switch>
+        <Page auth={auth} logout={this.handleLogOut}>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => <Dashboard auth={auth} {...props} />}
+            />
+            <Route
+              path="/authenticate"
+              render={props => {
+                this.handleAuthentication(props);
+                return <Loading {...props} />;
+              }}
+            />
+          </Switch>
+        </Page>
       </BrowserRouter>
     );
   }

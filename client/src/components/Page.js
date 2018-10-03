@@ -2,14 +2,18 @@ import React from 'react';
 import Header from './Header';
 
 const Page = props => {
+  const { isAuthenticated } = props.auth;
+
   return (
     <React.Fragment>
       <nav className="navbar navbar-light bg-light">
         <button
           className="btn btn-link ml-auto"
-          onClick={() => this.props.auth.logout(this.props.history)}
+          onClick={() =>
+            isAuthenticated() ? props.logout() : props.auth.login()
+          }
         >
-          Log Out
+          Log {isAuthenticated() ? 'out' : 'in'}
         </button>
       </nav>
       <Header />
