@@ -1,5 +1,9 @@
 import React from 'react';
 
-const Loading = () => <div>Loading</div>;
+const Loading = () => (
+  <div className="loading">
+    <span />
+  </div>
+);
 
 export default Loading;

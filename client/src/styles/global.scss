@@ -43,3 +43,24 @@ body {
   height: 400px;
   margin-top: 30px;
 }
+
+.loading {
+  border-radius: 10px;
+  border: 4px solid $dark;
+  height: 20px;
+  width: 150px;
+  margin: 20px auto;
+  position: relative;
+
+  span {
+    border-radius: 10px;
+    background: $warning;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    animation-duration: 1s;
+    animation-name: changewidth;
+    animation-iteration-count: infinite;
+  }
+}
