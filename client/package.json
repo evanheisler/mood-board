@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "auth0-js": "9.8.0",
+    "auth0-js": "9.13.2",
     "bootstrap": "4.3.1",
     "emojilib": "2.3.0",
     "moment": "2.22.2",
